@@ -18,6 +18,7 @@
       .tiny {font-size: 20px;}
       .red {color:red;}
       .green {color:green;}
+      .blue {color:blue;}
       .gray {color:gray}
       .lightgray {color:lightgray}
     </style>
@@ -38,7 +39,7 @@ class: center, middle
 
 
 
-<!-- ![:scale 80%](./images/branching-illustration@2x.png) -->
+
 
 ---
 class: middle, center
@@ -61,7 +62,10 @@ Git is a free & open source version control system.
 
 .center[[Official website](https://git-scm.com/)] -->
 
+---
+class: middle, center
 
+![:scale 100%](./images/git-branch.svg)
 
 
 ---
@@ -138,15 +142,35 @@ $ git config --list
 
 ---
 
-# Creating a repository
+# cd into your .red[un-report] directory
+
+
+To check if you are there, print the working directory
 
 ```
 $ pwd
 ```
 
+<br>
+
+Or you can list the files in the current directory
+
+```
+$ ls
+```
 
 ---
-# Initialize a new Git repository.
+# Show the status of the git repository
+
+```
+$ git status
+```
+
+At this point, we will see an error message. 
+This is because the directory is not a git repository yet.
+
+---
+# Initialize a new Git repository
 
 ```
 $ git init
@@ -163,6 +187,27 @@ $ git status
 - Show modified files in working directory, staged for your next commit. 
 
 
+---
+# Under the hood
+
+Git stores all project info inside a (hidden) .[.git] folder
+
+List all files
+
+```
+$ ls -a
+```
+
+<br>
+
+List the files inside the .red[.git] folder
+
+```
+$ cd .git
+$ ls
+$ cd ..
+```
+
 
 ---
 
@@ -170,9 +215,7 @@ $ git status
 
 An intermediate area where a subset of the modified files can be grouped for a commit.
 
-.center[![:scale 100%](./images/git-committing.svg)]
-
-
+.center[![:scale 90%](./images/git-committing.svg)]
 
 It helps to split up unrelated changes in your working directory into multiple, more meaningful commits.
 
@@ -199,12 +242,142 @@ Add all files in working directory to the staging area. -->
 
 
 ---
-# Commit the staged contents as a new snapshot
+# Commit (i.g., taking a snapshot of) the changes from the staged files
+
 
 
 ```
-$ git commit -m "Add notes file."
+$ git commit -m "Initial commit"
 ```
+
+---
+class: middle, center 
+
+# Tracking changes
+
+
+---
+Let's create a file called .blue[notes.txt].
+
+
+```
+$ nano notes.txt
+```
+
+Let's type some text into the .blue[notes.txt] file
+
+
+>> .green[*We plotted life expectancy over time.*]
+
+
+We can verify the file was created by running
+
+```
+$ ls
+```
+
+We can also view the content of the file in the command line window by running
+
+```
+$ cat notes.txt
+```
+
+---
+# Commit the changes
+
+```
+$ git status
+```
+
+```
+$ git add notes.txt
+```
+
+```
+$ git status
+```
+
+```
+$ git commit -m "Start notes on analysis"
+```
+
+```
+git status
+```
+
+---
+# Make some more changes
+
+```
+$ nano notes.txt
+```
+
+<br>
+
+Let's add a second line into the .blue[notes.txt] file
+
+
+>> .gray[*We plotted life expectancy over time.*]
+
+>> .green[*Each point represents a country.*]
+
+
+<br>
+
+```
+$ cat notes.txt
+```
+
+---
+# Commit the new changes
+
+```
+$ git status
+```
+
+```
+$ git diff
+```
+
+```
+$ git add notes.txt
+```
+
+```
+$ git commit -m "Add information on points"
+```
+
+```
+$ git status
+```
+
+---
+# Exercise
+
+Follow the previous examples to 
+
+- Add a third line to the .blue[notes.txt] file
+
+>> .gray[*We plotted life expectancy over time.*]
+
+>> .gray[*Each point represents a country.*]
+
+>> .green[*Continents are grouped by color..*]
+
+
+
+- Commit the above change. 
+
+
+---
+
+# Question
+
+Which of the following commit messages would be most appropriate for the last commit?
+
+1. “Changes”
+1. “Added line ‘Continents are grouped by color.’ to notes.txt”
+1. “Describe grouping”
 
 
 ---
@@ -241,19 +414,19 @@ class: middle, center
 
 # Intro to GitHub
 
-
-
 ---
-# Share & update
 
+- Open the GitHub website and sign in
+- Create a new repository with name .red[un-report]
+  - Do not check the box to add a README file
+- Copy the URL that ends with .red[un-report.git]
+- Add this GitHub repo we just created as a "remote" for our local git repo.
 
 ```
 $ git remote add [alias] [url]
 ```
 
-<br>
-
-By convention, the GitHub repo is often named `origin`.
+By convention the GitHub repo is often named .red[origin].
 
 ```
 $ git remote add origin https://github.com/x/abc.git
