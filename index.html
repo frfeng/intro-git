@@ -28,11 +28,41 @@
 <textarea id="source">
 
 ## Notes
-* Need to update with directory structure from the end of bash section see 
+* Need to update screenshots with directory structure from the end of bash section see 
 
 .center[![:scale 30%](./images/starting-directory-structure.png)]
 
-* Include .gitignore discussion to hide setup script
+* Include .gitignore discussion to show how to hide setup script (did this when teaching on 2023-10-12)
+  * Ignore big data files, PHI, passwords, etc
+  
+* One person had git in a non-standard location that RStudio couldn't find
+
+---
+
+## Notes (cont)
+
+* Windows had a pop up window when doing the first git push, had them pick token instead of the other options
+* Windows terminal within RStudio doesn't seem to use bash 
+* When instructor zooms in on RStudio, you lose the labels next to icons (e.g., Commit, Push, Pull)
+* At end, would be good to see how an active research lab uses GitHub to serve up code/data/images for papers
+
+---
+
+## Notes (cont)
+
+* Got through "Modify your R script..." exercise
+  * then talked through why you'd run git from the command line
+  * emphasized that 98% of my git use is covered by RStudio
+  * encouraged to get comfortable using git in RStudio before trying to use git on command line
+
+---
+
+## Notes (cont)
+
+* At the LICENSE part, I showed issue tracker
+* Simulated a conversation with PI
+* Picked the LICENSE
+* Committed changes and closed issue
 
 ---
 
@@ -57,15 +87,14 @@ class: middle, center
 ---
 class: middle, center
 
-.center[![:scale 80%](./images/dropbox.png) ]
-
-.center[![:scale 80%](./images/google-docs.png)]
-
+.center[![:scale 100%](./images/word-diff.png) ]
 
 ---
 class: middle, center
 
-.center[![:scale 100%](./images/word-diff.png) ]
+.center[![:scale 80%](./images/dropbox.png) ]
+
+.center[![:scale 80%](./images/google-docs.png)]
 
 ---
 class: middle, center
@@ -145,7 +174,8 @@ $ git config --global core.autocrlf input
 ### On Windows:
 
 ```
-git config --global core.autocrlf true
+
+$ git config --global core.autocrlf true
 ```
 
 
@@ -171,7 +201,7 @@ $ git config --global init.defaultBranch main
 ### Credential storage
 
 ```
-git config --global credential.helper store
+$ git config --global credential.helper store
 ```
 
 ---
@@ -197,7 +227,7 @@ $ git config --list
 
 ---
 
-## Using git - 95% of what you will do
+## Using git - 98% of what you will do
 
 * Get versions of our files into repository
 * Attach a message to our files indicating what happened
@@ -235,7 +265,7 @@ Write "Initial commit" in message window
 * Click close
 * Notice that the staging window is now empty
 
----###
+---
 
 ## Create repository in GitHub
 
@@ -308,37 +338,12 @@ Enter your GitHub username and wait when asked for your password, we will use a 
 
 
 ---
-# Add files to the staging area
-
-```
-$ git add [file_1] [file_2]
-```
-
-Add the files (as they look now) to the staging area for your next commit.
-
-- Each commit should be a logical unit of change.
-
-
----
-# Commit (i.g., taking a snapshot of) the changes from the staged files
-
-
-
-```
-$ git commit -m "Initial commit"
-```
-
----
-class: middle, center 
-
-# Tracking changes
-
-
----
 
 ## New file
 
-.center[![:scale 75%](./images/rstudio-new-markdown.png) ]
+GitHub suggests adding a README file, let's do it from within RStudio
+
+.center[![:scale 55%](./images/rstudio-new-markdown.png) ]
 
 
 Save the file as .blue[README.md]
@@ -389,16 +394,6 @@ Notice the "diff" at the bottom of the window indicating what has changed
 
 ## Exercise
 
-Which of the following commit messages would be most appropriate for the last commit?
-
-1. “Changes”
-1. “Added line ‘Continents are grouped by color.’ to notes.txt”
-1. “Describe grouping”
-
----
-
-## Exercise
-
 Follow the previous examples to...
 
 - Add a third line to the README.md
@@ -413,6 +408,16 @@ Continents are grouped by color.
 
 - What happens if you click "View file @ XYZ1234" in the "Changes" view of an
 earlier commit? When would you want to use this?
+
+---
+
+## Exercise
+
+Which of the following commit messages would be most appropriate for the last commit?
+
+1. “Changes”
+1. “Added line ‘Continents are grouped by color.’ to notes.txt”
+1. “Describe grouping”
 
 ---
 class: middle, center
@@ -587,7 +592,7 @@ solutions using the command line
 How do we look at the staging area?
 
 ```
-git status
+$ git status
 ```
 
 --
@@ -595,7 +600,7 @@ git status
 Modify README.md to include your name and the date
 
 ```
-git status
+$ git status
 ```
 
 --
@@ -603,7 +608,7 @@ git status
 See the change as git sees it
 
 ```
-git diff
+$ git diff
 ```
 
 ---
@@ -613,8 +618,8 @@ git diff
 To stage the change (can add more than one file)
 
 ```
-git add README.md 
-git status
+$ git add README.md 
+$ git status
 ```
 
 --
@@ -622,8 +627,8 @@ git status
 To commit the change
 
 ```
-git commit -m "Added my name and date"
-git status
+$ git commit -m "Added my name and date"
+$ git status
 ```
 
 ---
@@ -633,14 +638,14 @@ git status
 To push the changes
 
 ```
-git push
-git status
+$ git push
+$ git status
 ```
 
 --
 To pull any changes (there aren't any)
 ```
-git pull
+$ git pull
 ```
 
 Why might you want to pull from GitHub before committing any changes on your
@@ -677,21 +682,12 @@ local computer?
 ---
 
 ## From here...
-Option 1:
-* Fork repository
-* Create project from repository
-* Push / pull request
 
-Option 2:
-* Clone repository to new project
-* Push to main user's repository
+* Option 1: Fork repository / Create project from repository / Push / File pull request
+* Option 2: Clone repository to new project / Push to main user's repository
+* Option 3: Create feature branch / Clone repository to new project / Work on new feature branch / Push to main user's repository / Merge branches
 
-Option 3:
-* Create feature branch
-* Clone repository to new project
-* Work on new feature branch
-* Push to main user's repository
-* Merge branches
+Cover how to handle merge conflicts?
 
 <!-- ------------------------------------------ -->
 
