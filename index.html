@@ -27,21 +27,26 @@
 
 <textarea id="source">
 
+## Notes
+* Need to update with directory structure from the end of bash section see 
+
+.center[![:scale 30%](./images/starting-directory-structure.png)]
+
+
+
+---
+
 class: center, middle
 
 
 # Introduction to 
 
-.center[![:scale 30%](./images/Git-Logo-2Color.png) ]
+.center[![:scale 30%](./images/Git-Logo-2Color.png)]
 
 .center[![:scale 30%](./images/GitHub_Logo.png)]
 
-
-
-
-
-
 ---
+
 class: middle, center
 
 ![:scale 56%](./images/phd101212s.gif)
@@ -49,24 +54,43 @@ class: middle, center
 
 .tiny[.lightgray[“Piled Higher and Deeper” by Jorge Cham]]
 
-<!-- ---
-# What is Git?
+---
+class: middle, center
 
-.center[![:scale 50%](./images/Git-Logo-2Color.png)]
+.center[![:scale 80%](./images/dropbox.png) ]
 
-<br>
+.center[![:scale 80%](./images/google-docs.png)]
 
-Git is a free & open source version control system.
 
-<br>
+---
+class: middle, center
 
-.center[[Official website](https://git-scm.com/)] -->
+.center[![:scale 100%](./images/word-diff.png) ]
+
+---
+class: middle, center
+
+.center[![:scale 100%](./images/googlesheets-diff.png) ]
+
+---
+class: middle, center
+
+.center[![:scale 100%](./images/excel-undo.png) ]
 
 ---
 class: middle, center
 
 ![:scale 100%](./images/git-branch.svg)
 
+---
+
+class: middle, center
+
+.center[![:scale 70%](./images/Git-Logo-2Color.png) ]
+
+.center[![:scale 70%](./images/GitHub_Logo.png)]
+
+--
 
 ---
 class: middle, center
@@ -76,12 +100,24 @@ class: middle, center
 
 ---
 
+class: middle, center
+
+.center[![:scale 100%](./images/rstudio-new-terminal.png) ]
+
+---
+
+class: middle, center
+
+.center[![:scale 100%](./images/rstudio-terminal.png) ]
+
+---
+
 ### User name
 
 Set a name that is identifiable for credit when review version history.
 
 ```
-$ git config --global user.name "Fred Feng"
+$ git config --global user.name "Pat Schloss"
 ```
 
 --
@@ -91,7 +127,7 @@ $ git config --global user.name "Fred Feng"
 Set an email address that will be associated with each history marker.
 
 ```
-$ git config --global user.email "fredfeng@umich.edu"
+$ git config --global user.email "pdschloss@umich.edu"
 ```
 
 
@@ -132,6 +168,13 @@ $ git config --global init.defaultBranch main
 
 --
 
+### Credential storage
+
+```
+git config --global credential.helper store
+```
+
+---
 
 ### View the configurations
 
@@ -139,85 +182,130 @@ $ git config --global init.defaultBranch main
 $ git config --list
 ```
 
+---
+
+## Now to initialize our repository
+
+.center[![:scale 100%](./images/rstudio-git-init-1.png)]
 
 ---
 
-# cd into your .red[un-report] directory
+## Now to initialize our repository
 
-
-To check if you are there, print the working directory
-
-```
-$ pwd
-```
-
-<br>
-
-Or you can list the files in the current directory
-
-```
-$ ls
-```
-
----
-# Show the status of the git repository
-
-```
-$ git status
-```
-
-At this point, we will see an error message. 
-This is because the directory is not a git repository yet.
-
----
-# Initialize a new Git repository
-
-```
-$ git init
-```
-
-
----
-# Show the status of the git repository
-
-```
-$ git status
-```
-
-- Show modified files in working directory, staged for your next commit. 
-
-
----
-# Under the hood
-
-Git stores all project info inside a (hidden) .[.git] folder
-
-List all files
-
-```
-$ ls -a
-```
-
-<br>
-
-List the files inside the .red[.git] folder
-
-```
-$ cd .git
-$ ls
-$ cd ..
-```
+.center[![:scale 75%](./images/rstudio-git-init-2.png)]
 
 
 ---
 
-# Staging area
+## Using git - 95% of what you will do
 
-An intermediate area where a subset of the modified files can be grouped for a commit.
+* Get versions of our files into repository
+* Attach a message to our files indicating what happened
 
 .center[![:scale 90%](./images/git-committing.svg)]
 
-It helps to split up unrelated changes in your working directory into multiple, more meaningful commits.
+---
+
+## Untracked files
+
+.center[![:scale 90%](./images/rstudio-git-unstaged.png)]
+
+---
+
+## Staging/adding our changes
+
+.center[![:scale 65%](./images/rstudio-git-staged.png)]
+
+Once files checked, click check icon under "Environment" tab name
+
+---
+
+## Committing our changes
+
+.center[![:scale 65%](./images/rstudio-git-commit.png)]
+
+Write "Initial commit" in message window
+
+---
+
+## Committing our changes
+
+.center[![:scale 65%](./images/rstudio-git-commit-success.png)]
+
+* Click close
+* Notice that the staging window is now empty
+
+---###
+
+## Create repository in GitHub
+
+- Open the GitHub website and sign in
+- Create a new repository with name .red[un-report]
+  - Do not check the box to add a .red[README] file
+  - Do not select a .red[.gitignore] file 
+  - Do not select a .red[LICENSE] file
+- Click .green[Create repository] button
+
+---
+
+## Connecting GitHub to your computer
+
+.center[![:scale 65%](./images/github-push-instructions.png)]
+
+Make sure that HTTPS is selected and click copy button to the right of the "…or push an existing repository from the command line" section
+
+---
+
+## Connecting GitHub to your computer
+
+.center[![:scale 75%](./images/rstudio-git-push-setup.png)]
+
+Enter your GitHub username and wait when asked for your password, we will use a personal access token
+---
+
+## Create Personal Access Token
+
+.center[![:scale 100%](./images/github-dropdown-settings.png) ]
+
+---
+
+## Create Personal Access Token
+
+.center[![:scale 100%](./images/github-dropdown-developer-settings.png) ]
+
+---
+
+## Create Personal Access Token
+
+.center[![:scale 100%](./images/github-dropdown-pat-settings.png) ]
+
+---
+
+## Create Personal Access Token
+
+.center[![:scale 100%](./images/github-generate-pat.png) ]
+
+---
+
+## Create Personal Access Token
+
+.center[![:scale 100%](./images/github-new-access-token-1.png) ]
+
+---
+
+## Create Personal Access Token
+
+.center[![:scale 100%](./images/github-new-access-token-2.png) ]
+
+---
+
+## Connecting GitHub to your computer
+
+.center[![:scale 55%](./images/rstudio-git-push-setup-w-pat.png)]
+
+* Where asked for your password paste the personal access token
+* We shouldn't be asked for password again for 90 (or whatever) days
+
 
 ---
 # Add files to the staging area
@@ -229,16 +317,6 @@ $ git add [file_1] [file_2]
 Add the files (as they look now) to the staging area for your next commit.
 
 - Each commit should be a logical unit of change.
-
-
-
-<!-- <br>
-
-```
-$ git add .
-```
-
-Add all files in working directory to the staging area. -->
 
 
 ---
@@ -257,121 +335,59 @@ class: middle, center
 
 
 ---
-Let's create a file called .blue[notes.txt].
+
+## New file
+
+.center[![:scale 75%](./images/rstudio-new-markdown.png) ]
 
 
-```
-$ nano notes.txt
-```
-
-Let's type some text into the .blue[notes.txt] file
-
-
->> .green[*We plotted life expectancy over time.*]
-
-
-We can verify the file was created by running
-
-```
-$ ls
-```
-
-We can also view the content of the file in the command line window by running
-
-```
-$ cat notes.txt
-```
+Save the file as .blue[README.md]
 
 ---
-# Commit the changes
+## Let's type some text into the .blue[README.md] file
 
 ```
-$ git status
+## Notes for UN Report 
+
+We plotted life expectancy over time.
 ```
+  
+--
 
-```
-$ git add notes.txt
-```
+Check out the change in the git staging window
 
-```
-$ git status
-```
-
-```
-$ git commit -m "Start notes on analysis"
-```
-
-```
-git status
-```
-
----
-# Make some more changes
-
-```
-$ nano notes.txt
-```
-
-<br>
-
-Let's add a second line into the .blue[notes.txt] file
-
-
->> .gray[*We plotted life expectancy over time.*]
-
->> .green[*Each point represents a country.*]
-
-
-<br>
-
-```
-$ cat notes.txt
-```
-
----
-# Commit the new changes
-
-```
-$ git status
-```
-
-```
-$ git diff
-```
-
-```
-$ git add notes.txt
-```
-
-```
-$ git commit -m "Add information on points"
-```
-
-```
-$ git status
-```
-
----
-# Exercise
-
-Follow the previous examples to 
-
-- Add a third line to the .blue[notes.txt] file
-
->> .gray[*We plotted life expectancy over time.*]
-
->> .gray[*Each point represents a country.*]
-
->> .green[*Continents are grouped by color..*]
-
-
-
-- Commit the above change. 
-
+.center[![:scale 50%](./images/rstudio-readme-unstaged.png) ]
 
 ---
 
-# Question
+## Stage, add and commit the change
+
+.center[![:scale 100%](./images/rstudio-readme-commit-1.png) ]
+
+---
+## Let's add a line to README.md
+
+```
+We plotted life expectancy over time.
+Each point represents a country
+```
+
+--
+Notice the change in the git staging window
+
+.center[![:scale 100%](./images/rstudio-readme-stage-modify.png) ]
+
+---
+
+## Commit the new changes
+
+.center[![:scale 60%](./images/rstudio-readme-commit-2.png) ]
+
+Notice the "diff" at the bottom of the window indicating what has changed
+
+---
+
+## Exercise
 
 Which of the following commit messages would be most appropriate for the last commit?
 
@@ -379,12 +395,30 @@ Which of the following commit messages would be most appropriate for the last co
 1. “Added line ‘Continents are grouped by color.’ to notes.txt”
 1. “Describe grouping”
 
+---
+
+## Exercise
+
+Follow the previous examples to...
+
+- Add a third line to the README.md
+
+```
+We plotted life expectancy over time.
+Each point represents a country.
+Continents are grouped by color.
+```
+
+- Stage and commit the above change
+
+- What happens if you click "View file @ XYZ1234" in the "Changes" view of an
+earlier commit? When would you want to use this?
 
 ---
 class: middle, center
 
 
-![:scale 100%](./images/git_commit_2x.png)
+.center[![:scale 100%](./images/git_commit_2x.png)]
 
 <br>
 
@@ -393,60 +427,271 @@ class: middle, center
 
 ---
 
-# Show the commit logs
+## Show the commit logs
 
-```
-$ git log
-```
-
-```
-$ git log -5
-```
-
-```
-$ git log --oneline
-```
-
-
-
----
-class: middle, center
-
-# Intro to GitHub
+.center[![:scale 75%](./images/rstudio-git-history.png)]
 
 ---
 
-- Open the GitHub website and sign in
-- Create a new repository with name .red[un-report]
-  - Do not check the box to add a README file
-- Copy the URL that ends with .red[un-report.git]
-- Add this GitHub repo we just created as a "remote" for our local git repo.
+## Let's edit our README.md file further
 
-```
-$ git remote add [alias] [url]
-```
+.center[![:scale 80%](./images/rstudio-readme-edit.png)]
 
-By convention the GitHub repo is often named .red[origin].
+---
 
-```
-$ git remote add origin https://github.com/x/abc.git
-```
+## Let's check out the diff before committing
+
+.center[![:scale 80%](./images/rstudio-readme-diff.png)]
+
+---
+
+## Let's stage and commit from the diff window
+
+.center[![:scale 80%](./images/rstudio-readme-paragraph-commit.png)]
+
+---
+
+## How to get this up to GitHub?
+
+.green[Push]. Click the upward pointing arrow.
+
+.center[![:scale 80%](./images/rstudio-readme-push.png)]
+
+---
+
+## GitHub changes
+
+.center[![:scale 100%](./images/github-readme-push.png)]
+
+---
+
+## GitHub commit history
+
+.center[![:scale 100%](./images/github-commit-history.png)]
 
 
 ---
 
-```
-$ git clone [url]
-```
+## GitHub diffs
+
+.center[![:scale 100%](./images/github-commit-diff.png)]
+
+---
+
+## Let's create a file on GitHub
+
+.center[![:scale 100%](./images/github-create-new-file.png)]
+
+---
+
+## Let's create a file on GitHub
+
+.center[![:scale 100%](./images/github-name-file-license.png)]
+
+
+---
+
+## Let's create a file on GitHub
+
+.center[![:scale 100%](./images/github-ignore-warning.png)]
+
+
+---
+
+## Let's create a file on GitHub
+
+.center[![:scale 100%](./images/github-select-license.png)]
+
+---
+
+## Let's create a file on GitHub
+
+.center[![:scale 100%](./images/github-license-text.png)]
+
+---
+
+## Let's commit changes on GitHub
+
+.center[![:scale 100%](./images/github-license-commit.png)]
+
+---
+
+## New file already on GitHub
+
+.center[![:scale 100%](./images/github-repo-update.png)]
+
+---
+
+## How do we get our file back to our local computer?
+
+.center[![:scale 100%](./images/rstudio-pre-pull.png)]
+
+
+---
+
+## How do we get our file back to our local computer? .red[Pull]
+
+.center[![:scale 100%](./images/rstudio-post-pull.png)]
+
+
+---
+
+## Exercise
+
+* Modify your R script to include the following after the ggplot code chunk:
 
 ```
-$ git push origin main
+ggsave("figures/gdpPercap_lifeExp.png")
 ```
 
+* Rerun the ggplot code chunk along with the following ggsave line
+* Update your REAMDE.md file
+* Stage the changes and new file, commit those changes, and push to GitHub
+
+---
+
+## Exercise
+
+* Create a new Git repository on your computer called workshop
+* Write three lines about what you have learned about R and bash a file called README.md, commit your changes
+* Modify one line, add a fourth line
+* Display the differences between its updated state and its original state
+* Push it to GitHub
+
+---
+
+## Why run git from the terminal?
+
+* RStudio and other git-based tools with a graphical user interface (GUI) have
+gotten really good over the past few years, especially for most of our needs
+
+--
+
+* But they aren't as powerful as running the commands from the command line
+--
+
+* Believe it or not, typing can be a lot faster than pointing and clicking!
+
+--
+
+* If you need help doing something, Google likely point you to 
+solutions using the command line
+--
+
+* You don't always have access to a GUI (e.g., HPC)
+
+---
+
+## git from the terminal
+
+How do we look at the staging area?
+
 ```
-$ git pull origin main
+git status
 ```
 
+--
+
+Modify README.md to include your name and the date
+
+```
+git status
+```
+
+--
+
+See the change as git sees it
+
+```
+git diff
+```
+
+---
+
+## git from the terminal
+
+To stage the change (can add more than one file)
+
+```
+git add README.md 
+git status
+```
+
+--
+
+To commit the change
+
+```
+git commit -m "Added my name and date"
+git status
+```
+
+---
+
+## git from the terminal
+
+To push the changes
+
+```
+git push
+git status
+```
+
+--
+To pull any changes (there aren't any)
+```
+git pull
+```
+
+Why might you want to pull from GitHub before committing any changes on your
+local computer?
+
+---
+
+## Exercise
+
+* Change the ColorBrewer palette to `Dark2`
+* Rerun the code and be sure to save the output with `ggsave`
+* Use `git status` to look at the staging area
+* Use `git diff` to look at what has changed
+* Stage, commit, and push your changes
+
+---
+
+## Collaboration
+
+.center[![:scale 100%](./images/github-collaborators.png)]
+
+---
+
+## Collaboration
+
+.center[![:scale 100%](./images/github-collaborators-add.png)]
+
+---
+
+## Collaboration
+
+.center[![:scale 100%](./images/github-collaborators-waiting.png)]
+
+---
+
+## From here...
+Option 1:
+* Fork repository
+* Create project from repository
+* Push / pull request
+
+Option 2:
+* Clone repository to new project
+* Push to main user's repository
+
+Option 3:
+* Create feature branch
+* Clone repository to new project
+* Work on new feature branch
+* Push to main user's repository
+* Merge branches
 
 <!-- ------------------------------------------ -->
 
