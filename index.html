@@ -36,11 +36,6 @@ class: center, middle
 
 .center[![:scale 30%](./images/GitHub_Logo.png)]
 
-
-
-
-
-
 ---
 class: middle, center
 
@@ -48,6 +43,34 @@ class: middle, center
 
 
 .tiny[.lightgray[“Piled Higher and Deeper” by Jorge Cham]]
+
+
+---
+class: middle, center
+
+.center[![:scale 100%](./images/word-diff.png) ]
+
+
+---
+class: middle, center
+
+.center[![:scale 80%](./images/dropbox.png) ]
+
+.center[![:scale 80%](./images/google-docs.png)]
+
+
+---
+class: middle, center
+
+.center[![:scale 100%](./images/googlesheets-diff.png)]
+
+
+---
+class: middle, center
+
+.center[![:scale 100%](./images/excel-undo.png)]
+
+
 
 <!-- ---
 # What is Git?
@@ -66,6 +89,16 @@ Git is a free & open source version control system.
 class: middle, center
 
 ![:scale 100%](./images/git-branch.svg)
+
+
+---
+
+class: middle, center
+
+.center[![:scale 70%](./images/Git-Logo-2Color.png) ]
+
+.center[![:scale 70%](./images/GitHub_Logo.png)]
+
 
 
 ---
@@ -132,12 +165,29 @@ $ git config --global init.defaultBranch main
 
 --
 
+### Credential storage
+
+```
+$ git config --global credential.helper store
+```
+
+---
+
 
 ### View the configurations
 
 ```
 $ git config --list
 ```
+
+---
+
+## Using git - 98% of what you will do
+
+* Get versions of our files into repository
+* Attach a message to our files indicating what happened
+
+.center[![:scale 90%](./images/git-committing.svg)]
 
 
 ---
@@ -166,11 +216,14 @@ $ ls
 $ git status
 ```
 
-At this point, we will see an error message. 
-This is because the directory is not a git repository yet.
+At this point, we will see an error message.
+
+```
+fatal: not a git repository
+```
 
 ---
-# Initialize a new Git repository
+# Initialize a new git repository
 
 ```
 $ git init
@@ -190,7 +243,7 @@ $ git status
 ---
 # Under the hood
 
-Git stores all project info inside a (hidden) .[.git] folder
+Git stores all project info inside a hidden .red[.git] folder
 
 List all files
 
@@ -203,9 +256,7 @@ $ ls -a
 List the files inside the .red[.git] folder
 
 ```
-$ cd .git
-$ ls
-$ cd ..
+$ ls .git
 ```
 
 
@@ -217,7 +268,7 @@ An intermediate area where a subset of the modified files can be grouped for a c
 
 .center[![:scale 90%](./images/git-committing.svg)]
 
-It helps to split up unrelated changes in your working directory into multiple, more meaningful commits.
+It helps to split up unrelated changes in your working directory into multiple, meaningful commits.
 
 ---
 # Add files to the staging area
@@ -242,7 +293,7 @@ Add all files in working directory to the staging area. -->
 
 
 ---
-# Commit (i.g., taking a snapshot of) the changes from the staged files
+# Commit (i.g., take a snapshot of) the changes from the staged files
 
 
 
@@ -257,20 +308,25 @@ class: middle, center
 
 
 ---
-Let's create a file called .blue[notes.txt].
+Let's create a file called .blue[README.md].
 
 
 ```
-$ nano notes.txt
+$ nano README.md
 ```
 
-Let's type some text into the .blue[notes.txt] file
+Let's type some text into the .blue[README.md] file
 
 
->> .green[*We plotted life expectancy over time.*]
+```
+## Notes for UN Report 
 
+We plotted life expectancy over time.
+```
+  
+---
 
-We can verify the file was created by running
+We can verify the file was indeed created by running
 
 ```
 $ ls
@@ -279,7 +335,7 @@ $ ls
 We can also view the content of the file in the command line window by running
 
 ```
-$ cat notes.txt
+$ cat README.md
 ```
 
 ---
@@ -290,7 +346,7 @@ $ git status
 ```
 
 ```
-$ git add notes.txt
+$ git add README.md
 ```
 
 ```
@@ -309,12 +365,12 @@ git status
 # Make some more changes
 
 ```
-$ nano notes.txt
+$ nano README.md
 ```
 
 <br>
 
-Let's add a second line into the .blue[notes.txt] file
+Let's add a second line into the .blue[README.md] file
 
 
 >> .gray[*We plotted life expectancy over time.*]
@@ -325,7 +381,7 @@ Let's add a second line into the .blue[notes.txt] file
 <br>
 
 ```
-$ cat notes.txt
+$ cat README.md
 ```
 
 ---
@@ -340,7 +396,7 @@ $ git diff
 ```
 
 ```
-$ git add notes.txt
+$ git add README.md
 ```
 
 ```
@@ -356,13 +412,13 @@ $ git status
 
 Follow the previous examples to 
 
-- Add a third line to the .blue[notes.txt] file
+- Add a third line to the .blue[README.md] file
 
 >> .gray[*We plotted life expectancy over time.*]
 
 >> .gray[*Each point represents a country.*]
 
->> .green[*Continents are grouped by color..*]
+>> .green[*Continents are grouped by color.*]
 
 
 
@@ -376,7 +432,7 @@ Follow the previous examples to
 Which of the following commit messages would be most appropriate for the last commit?
 
 1. “Changes”
-1. “Added line ‘Continents are grouped by color.’ to notes.txt”
+1. “Added line ‘Continents are grouped by color.’ to README.md”
 1. “Describe grouping”
 
 
@@ -410,20 +466,34 @@ $ git log --oneline
 
 
 ---
-class: middle, center
 
-# Intro to GitHub
-
----
+## Create repository in GitHub
 
 - Open the GitHub website and sign in
 - Create a new repository with name .red[un-report]
-  - Do not check the box to add a README file
+  - Do not check the box to add a .red[README] file
+  - Do not select a .red[.gitignore] file 
+  - Do not select a .red[LICENSE] file
+- Click .green[Create repository] button
+
+
+---
+
+## Connect GitHub to your computer
+
+.center[![:scale 65%](./images/github-push-instructions.png)]
+
+
 - Copy the URL that ends with .red[un-report.git]
+
+---
+
+## Connect GitHub to your computer
+
 - Add this GitHub repo we just created as a "remote" for our local git repo.
 
 ```
-$ git remote add [alias] [url]
+$ git remote add [alias] [the url you just copied]
 ```
 
 By convention the GitHub repo is often named .red[origin].
@@ -435,17 +505,143 @@ $ git remote add origin https://github.com/x/abc.git
 
 ---
 
-```
-$ git clone [url]
-```
+## Create Personal Access Token
+
+.center[![:scale 100%](./images/github-dropdown-settings.png)]
+
+Click your GitHub profile, then "Settings".
+
+---
+
+## Create Personal Access Token
+
+.center[![:scale 90%](./images/github-dropdown-developer-settings.png)]
+
+Click "Developer settings" at bottom of the left panel.
+
+---
+
+## Create Personal Access Token
+
+.center[![:scale 100%](./images/github-dropdown-pat-settings.png) ]
+
+Click "Token (classic)".
+
+---
+
+## Create Personal Access Token
+
+.center[![:scale 100%](./images/github-generate-pat.png) ]
+
+---
+
+## Create Personal Access Token
+
+.center[![:scale 100%](./images/github-new-access-token-1.png) ]
+
+---
+
+## Create Personal Access Token
+
+.center[![:scale 100%](./images/github-new-access-token-2.png) ]
+
+---
+
+## Connect GitHub to your computer
+
+- Where asked for your password, paste the Personal Access Token.
+- We shouldn't be asked for password again for 90 (or whatever) days.
+
+
+---
+
+## How to get our local repo up to GitHub?
 
 ```
 $ git push origin main
 ```
 
+---
+
+## GitHub changes
+
+.center[![:scale 100%](./images/github-readme-push.png)]
+
+---
+
+## GitHub commit history
+
+.center[![:scale 100%](./images/github-commit-history.png)]
+
+
+---
+
+## GitHub diffs
+
+.center[![:scale 100%](./images/github-commit-diff.png)]
+
+---
+
+## Let's create a file on GitHub
+
+.center[![:scale 90%](./images/github-create-new-file.png)]
+
+---
+
+## Let's create a file on GitHub
+
+.center[![:scale 90%](./images/github-name-file-license.png)]
+
+
+---
+
+## Let's create a file on GitHub
+
+.center[![:scale 90%](./images/github-ignore-warning.png)]
+
+
+---
+
+## Let's create a file on GitHub
+
+.center[![:scale 90%](./images/github-select-license.png)]
+
+---
+
+## Let's create a file on GitHub
+
+.center[![:scale 90%](./images/github-license-text.png)]
+
+---
+
+## Let's commit changes on GitHub
+
+.center[![:scale 90%](./images/github-license-commit.png)]
+
+---
+
+## New file already on GitHub
+
+.center[![:scale 90%](./images/github-repo-update.png)]
+
+---
+
+## How do we get our file back to our local computer?
+
 ```
 $ git pull origin main
 ```
+
+
+---
+
+## Exercise
+
+- Create a new Git repository on your computer called workshop.
+- Write three lines about what you have learned about Python and bash a file called README.md, commit your changes.
+- Modify one line, add a fourth line.
+- Display the differences between its updated state and its original state.
+- Push it to GitHub.
 
 
 <!-- ------------------------------------------ -->
